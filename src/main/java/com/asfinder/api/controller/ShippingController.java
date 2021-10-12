@@ -18,8 +18,6 @@ public class ShippingController {
 
     @RequestMapping(value = "/toOrder", method = RequestMethod.POST)
     public void toOrder(@RequestBody Order order){
-
         shippingService.toOrder(order);
-
     }
 }

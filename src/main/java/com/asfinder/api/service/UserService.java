@@ -1,6 +1,7 @@
 package com.asfinder.api.service;
 
 import com.asfinder.api.model.User;
+import com.asfinder.api.repository.MyRepository;
 import com.asfinder.api.repository.UserRepository;
 import com.asfinder.api.repository.UserRepositoryCustom;
 import lombok.RequiredArgsConstructor;
@@ -22,15 +23,14 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final UserRepositoryCustom userRepositoryCustom;
+    //private final MyRepository myRepository;
 
     public List<User> getUsersByCountry(String countryKey){
         return userRepositoryCustom.getUsersByCountry(countryKey);
     }
 
     public List<User> getUsers(){
-        List<User> users = new ArrayList<>();
-        userRepository.findAll().forEach(users::add);
-        return users;
+        return new ArrayList<>(userRepository.findAll());
     }
 
     @Transactional
